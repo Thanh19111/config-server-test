@@ -1,0 +1,61 @@
+server:
+  port: 8060
+
+spring:
+  application:
+    name: product
+
+  jackson:
+    default-property-inclusion: non_null
+
+  cloud:
+    function:
+      definition: processFailInventory;processDeleteInventory
+    stream:
+      bindings:
+        #tao san pham
+        sendCreateInventory-out-0:
+          destination: create-inventory
+          content-type: application/json
+        processFailInventory-in-0:
+          destination: fail-inventory
+          group: inventory-fail
+          content-type: application/json
+
+        #xoa san pham
+        processDeleteInventory-out-0:
+          destination: delete-inventory
+          content-type: application/json
+        processDeleteInventory-in-0:
+          destination: deleted-inventory
+          group: inventory-delete-group
+          content-type: application/json
+
+      kafka:
+        binder:
+          brokers: ${KAFKA_BROKERS:localhost:9092}
+          auto-create-topics: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 10000
+        read-timeout: 10000
+  discovery:
+    enabled: true
