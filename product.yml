@@ -59,3 +59,9 @@ feign:
         read-timeout: 10000
   discovery:
     enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, refresh, busrefresh
