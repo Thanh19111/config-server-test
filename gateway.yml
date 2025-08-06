@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: api-gateway
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:http://localhost:9092}
   cloud:
     bus:  
       enabled: true
@@ -14,7 +16,7 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]': # CORS cho tất cả các route
-            allowedOrigins: "http://localhost:3000" # Địa chỉ frontend React
+            allowedOrigins: ${FE_URL:http://localhost:3000} # Địa chỉ frontend React
             allowedMethods:
               - GET
               - POST
@@ -38,7 +40,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUSERURI:http://localhost:8080/realms/myrealm}
+          issuer-uri: ${RESOURCESERVER_JWT_ISSUSERURI:http://localhost:8080/realms/myrealm}
           
 eureka:
   client:
