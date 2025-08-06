@@ -7,7 +7,7 @@ spring:
     bus:  
       enabled: true
   kafka:
-    bootstrap-servers: ${KAFKA_BROKERS:http://localhost:9092}
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
 
 eureka:
   instance:
