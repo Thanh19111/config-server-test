@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: product
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
   jackson:
     default-property-inclusion: non_null
 
