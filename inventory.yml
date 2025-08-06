@@ -9,6 +9,8 @@ spring:
     default-property-inclusion: non_null
 
   cloud:
+    bus:  
+      enabled: true
     function:
       definition: processCreateInventory;processDeleteInventory;processReservedInventory;processReleaseInventory
     stream:
