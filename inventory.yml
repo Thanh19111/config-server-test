@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: inventory
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:http://localhost:9092}
 
   jackson:
     default-property-inclusion: non_null
