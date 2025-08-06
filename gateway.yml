@@ -4,6 +4,8 @@ spring:
   application:
     name: api-gateway
   cloud:
+    bus:  
+      enabled: true
     gateway:
       discovery:
         locator:
