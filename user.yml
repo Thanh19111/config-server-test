@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: user
+  cloud:
+    bus:  
+      enabled: true
   jackson:
     default-property-inclusion: non_null
 
