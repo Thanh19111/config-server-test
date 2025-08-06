@@ -6,6 +6,16 @@ spring:
   cloud:
     bus:  
       enabled: true
+    function:
+      definition: clearItems
+    stream:
+      bindings:
+        #xoa items
+        clearItems-in-0:
+          destination: clear-items
+          content-type: application/json
+          group: clear-items-group
+
   kafka:
     bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
 
