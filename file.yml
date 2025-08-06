@@ -11,6 +11,8 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:http://localhost:9092}
 
 file:
   upload-dir: uploads/images
