@@ -7,7 +7,7 @@ spring:
   jackson:
     default-property-inclusion: non_null
   kafka:
-    bootstrap-servers: ${KAFKA_BROKERS:http://localhost:9092}
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
 
   cloud:
     bus:  
