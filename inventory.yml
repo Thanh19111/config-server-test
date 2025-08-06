@@ -49,8 +49,8 @@ spring:
           content-type: application/json
 
         #order clear cart
-        clearItem-out-0:
-          destination: clear-cart
+        clearItems-out-0:
+          destination: clear-items
           content-type: application/json
         
 
