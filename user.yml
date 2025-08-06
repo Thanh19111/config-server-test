@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: user
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
   cloud:
     bus:  
       enabled: true
