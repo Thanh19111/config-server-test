@@ -8,6 +8,8 @@ spring:
     default-property-inclusion: non_null
 
   cloud:
+    bus:  
+      enabled: true
     function:
       definition: processFailInventory;processDeleteInventory
     stream:
