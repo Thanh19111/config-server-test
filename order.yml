@@ -8,6 +8,8 @@ spring:
     default-property-inclusion: non_null
 
   cloud:
+    bus:  
+      enabled: true
     function:
       definition: processReservedInventoryFailEvent;processCanceledInventoryFailEvent
     stream:
@@ -28,7 +30,7 @@ spring:
 
       kafka:
         binder:
-          brokers: localhost:9092
+          brokers: ${KAFKA_BROKER:localhost:9092}
           auto-create-topics: true
           
 feign:
