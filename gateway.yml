@@ -39,6 +39,14 @@ spring:
             - StripPrefix=1
             - name: AddSubHeader
           order: -1
+        - id: cart-service
+          uri: lb://CART
+          predicates:
+            - Path=/cart,/CART,/cart/create,/CART/create
+          filters:
+            - StripPrefix=1
+            - name: AddSubHeader
+          order: -1
 
   security:
     oauth2:
