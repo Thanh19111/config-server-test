@@ -42,7 +42,7 @@ spring:
         - id: cart-service
           uri: lb://CART
           predicates:
-            - Path=/cart,/CART,/cart/create,/CART/create
+            - Path=/cart/carts,/CART/carts,/cart/carts/create,/CART/carts/create
           filters:
             - StripPrefix=1
             - name: AddSubHeader
