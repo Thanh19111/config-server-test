@@ -13,10 +13,10 @@ spring:
   cloud:
     bus:  
       enabled: true
-    kubernetes:
-      discovery:
-        enabled: true
-        all-namespaces: false
+    # kubernetes:
+    #   discovery:
+    #     enabled: true
+    #     all-namespaces: false
     function:
       definition: processCreateInventory;processDeleteInventory;processReservedInventory;processReleaseInventory
     stream:
@@ -63,14 +63,14 @@ spring:
           brokers: ${KAFKA_BROKERS:localhost:9092}
           auto-create-topics: true
 
-# eureka:
-#   instance:
-#     preferIpAddress: true
-#   client:
-#     register-with-eureka: true
-#     fetch-registry: true
-#     service-url:
-#       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
 
 management:
   endpoints:
