@@ -6,10 +6,10 @@ spring:
   kafka:
     bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
   cloud:
-    kubernetes:
-      discovery:
-        enabled: true
-        all-namespaces: false
+    # kubernetes:
+    #   discovery:
+    #     enabled: true
+    #     all-namespaces: false
     bus:  
       enabled: true
     gateway:
@@ -54,12 +54,12 @@ spring:
         jwt:
           issuer-uri: ${RESOURCESERVER_JWT_ISSUSERURI:http://localhost:8080/realms/myrealm}
           
-# eureka:
-#   client:
-#     register-with-eureka: true   # Cho phép đăng ký với Eureka
-#     fetch-registry: true         # Lấy danh sách các service khác
-#     service-url:
-#       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+eureka:
+  client:
+    register-with-eureka: true   # Cho phép đăng ký với Eureka
+    fetch-registry: true         # Lấy danh sách các service khác
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
 
 management:
   endpoints:
