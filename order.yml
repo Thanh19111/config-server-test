@@ -10,6 +10,10 @@ spring:
     bootstrap-servers: ${KAFKA_BROKERS:localhost:9092}
 
   cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+        all-namespaces: false
     bus:  
       enabled: true
     function:
@@ -42,14 +46,14 @@ feign:
         connect-timeout: 2000
         read-timeout: 3000
 
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+# eureka:
+#   instance:
+#     preferIpAddress: true
+#   client:
+#     register-with-eureka: true
+#     fetch-registry: true
+#     service-url:
+#       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
 
 management:
   endpoints:
