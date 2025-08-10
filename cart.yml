@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Cart
+    name: cart
   jackson:
     default-property-inclusion: non_null
   cloud:
