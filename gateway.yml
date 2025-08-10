@@ -1,6 +1,10 @@
 server:
   port: 8000
 spring:
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    
   application:
     name: gateway
   kafka:
@@ -13,6 +17,31 @@ spring:
     bus:  
       enabled: true
     gateway:
+      default-filters:
+        # Circuit Breaker
+        - name: CircuitBreaker
+          args:
+            name: globalCB
+            fallbackUri: forward:/fallback/global
+
+        # Rate Limiter (Redis)
+        - name: RequestRateLimiter
+          args:
+            key-resolver: "#{@ipKeyResolver}"
+            redis-rate-limiter.replenishRate: 5      # 5 request/giây
+            redis-rate-limiter.burstCapacity: 10     # tối đa 10 request dồn
+
+        # Retry filter
+        - name: Retry
+          args:
+            retries: 2
+            statuses: BAD_GATEWAY, GATEWAY_TIMEOUT, INTERNAL_SERVER_ERROR
+            methods: GET, POST
+            backoff:
+              firstBackoff: 50ms
+              maxBackoff: 500ms
+              factor: 2
+              basedOnPreviousValue: true
       discovery:
         locator:
           enabled: true
